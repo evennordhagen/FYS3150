@@ -46,13 +46,14 @@ double derivation2 (double x, double h)
 int main ()
 {
     double z1; double z2;                       //Variables for storing the derivated
+    double h = 10^-6;
     ofstream der1file; ofstream der2file;       //Naming the file representation
     der1file.open("derivation1.txt");           //Connecting name to file
     der1file << "h      derivation value\n";    //Writing head line in file
     der2file.open("derivation2.txt");
     der2file << "h      derivation value\n";
 
-    for (double h = 0.000001; h > 0.00000000001; h = h - 0.00000000001)
+    for(h; h > 0.00000000001; h = h - 0.00000000001)
     /* This for loop counts from 10^-6 to 10^-11 with timestep 10^-11
      * I prefer to make h smaller and smaller because I want to see
      * the error sink. */
@@ -63,23 +64,23 @@ int main ()
         der2file << h << "  " << std::setprecision(10) << z2 << endl;
     }
     der2file.close();       //Closing the file
+    der1file.close();
     cout << "The relative error is " << fabs(z1-1/3.) << " for method 1" << endl;
     cout << "and " << fabs(z2-1/3.) << " for method 2" << endl;  //Prints relative error
 
-    der1file.open("derivation1.txt",ios::out);
-    vector<int> numbers;
-    int number;
+    ifstream infile;
+    infile.open("derivation1.txt");
+    infile >> data;         // Reading from the file
+    cout << data << endl;   // Write the data at the screen.
 
+    // again read the data from the file and display it.
+    infile >> data;
+    cout << data << endl;
 
-    cout << counter[5];
-    if (der1file.is_open())
-    {
-        string myArray[5];
-        for(int i = 0; i < 5; ++i);
-        {
-            der1file >> myArray[i];
-        }
-    }
-    der1file.close();
+    infile >> data;
+    cout << data << endl;
+
+    // close the opened file.
+    infile.close();
     return 0;
 }

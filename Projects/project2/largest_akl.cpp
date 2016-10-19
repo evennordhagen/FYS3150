@@ -10,10 +10,8 @@ void largest_akl(mat A,int* kmax, int* lmax){
     for(int k = 0; k < N; k++){
         for(int l = 0; l < N; l++){
             if(A(k,l) >= max){
-                cout << "g" << endl;
                 *kmax = k;
                 *lmax = l;
-                cout << "h" << endl;
                 max = A(k,l);
             }
         }
